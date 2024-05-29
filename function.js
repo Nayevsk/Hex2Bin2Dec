@@ -15,7 +15,6 @@ function DecToBin(Dec){
     let Product = 0;
     let DecNumber = Dec;
     let NumberOfDecNumber = Math.floor(DecNumber);       // Getting only the number
-    
     let Quotient = NumberOfDecNumber;
     let remainder = 0;
     
@@ -27,11 +26,11 @@ function DecToBin(Dec){
         BinaryNumber = BinaryNumber + Math.floor(remainder);
     }
 
-    // Number Fraction to Bynary.
+    // Dec Fraction to Bynary.
 
     Product = DecNumber - Math.floor(DecNumber);
 
-    while(Product%1!=0){
+    while(Product%1!=0) {
 
         Product = Product*2
 
@@ -40,7 +39,7 @@ function DecToBin(Dec){
         } else {
             BinaryFraction = BinaryFraction + 1;
         }        
-    }
+    };
        
     BinaryNumber = RevertingString(BinaryNumber);
     // console.log (BinaryNumber);
@@ -51,12 +50,14 @@ function DecToBin(Dec){
 
 function DecToHex() {
     
-    let DecNumber = 254.655;
-    let WholeDecNumber = math.floor(DecNumber);
-    let FractionDecNumber = DecNumber - math.floor(DecNumber);
-    let HexNumber= "";
+    // WholeDec to WholeHex:
 
-    let HexSimbols = { // Dictionaro for conversion
+    let DecNumber = 159.046;
+    let WholeDecNumber = Math.floor(DecNumber);
+    let Quotient = WholeDecNumber;    
+    let HexNumber= "";
+    
+    let HexSimbols = { // Dictionary for conversion
         10:"A",
         11:"B",
         12:"C",
@@ -65,16 +66,39 @@ function DecToHex() {
         15:"F"
     }
 
-    While (Quotient >0) {
+    while (Quotient >0){
 
-        Quotient = WholeDecNumber / 16;
-        reminder = WholeDecNumber % 16;
-        HexNumber = 
+        let Remainder = Quotient%16;
+        Quotient = Math.floor(Quotient / 16);
+        
+        if(Remainder <10){
+            HexNumber = Remainder + HexNumber  ;
+        } else {
+            HexNumber = HexSimbols[Remainder] + HexNumber;
+        };
+         
+    }; 
 
-    } 
-    
+    // DecFrac to HexFrac:
+   
+    let Product = DecNumber - Math.floor(DecNumber);   
+    let HexFractionNumber = "";
+    let Precision = 11;         // Why precision is only efficient until 11????
 
+    for(let i = 0; i < Precision ; i++ ) {
+        
+        Product = Product*16;
+        
+        if (Math.floor(Product) < 10){
+            HexFractionNumber = HexFractionNumber + Math.floor(Product);
+        }else {
+            HexFractionNumber = HexFractionNumber + HexSimbols[Math.floor(Product)]
+        }
+        Product = Product - Math.floor(Product);         
+    }
 
+    return console.log (HexNumber+"."+HexFractionNumber)
 }
 
-console.log(HexSimbols[11]);
+
+DecToHex();
