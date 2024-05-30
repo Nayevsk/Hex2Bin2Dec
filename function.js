@@ -1,4 +1,4 @@
-function RevertingString(str){
+function RevertingString(str){  // Reverts an array, used for study porpuse, could simple invert the order of addition for Bin|Hex strings.
     var splitString = str.split(""); 
     
     var reverseArray = splitString.reverse(); 
@@ -8,7 +8,7 @@ function RevertingString(str){
    return joinArray
 }
 
-function DecToBin(Dec){
+function Dec2Bin(Dec){
 
     let BinaryNumber = "";         // Creating string to represent the bynary number.
     let BinaryFraction = "";        // Creating string to represent the bynary frection.
@@ -48,7 +48,7 @@ function DecToBin(Dec){
     return console.log(BinaryNumber+"."+BinaryFraction)      
 }
 
-function DecToHex() {
+function Dec2Hex() {
     
     // WholeDec to WholeHex:
 
@@ -100,5 +100,66 @@ function DecToHex() {
     return console.log (HexNumber+"."+HexFractionNumber)
 }
 
+function Bin2Dec (){
 
-DecToHex();
+    let BinNumber = "101110011.11001";
+    let WholeBinNumberLengh = 0;
+    let WholeDecNumber = 0;
+    let FracDecNumber = 0;
+    var SplitBinNumber = BinNumber.split("");
+
+    // WholeBin2Dec Sum:
+
+    while (SplitBinNumber[WholeBinNumberLengh] != "."){   //Fiding the size of whole bin number. 
+        WholeBinNumberLengh += 1;
+    }
+
+    for (i=0; i < WholeBinNumberLengh; i++) {
+        let Bit = SplitBinNumber[WholeBinNumberLengh -1 -i];  //Runs the string starting from end position "7" to first position of array.
+        if (Bit == 1){
+            WholeDecNumber += Math.pow(2,i);
+        }
+    }    
+
+    // FracBin2Dec Sum:  TO FIX
+
+        
+    for (i= WholeBinNumberLengh; i< BinNumber.length -1; i++){        // Iterate from the "." position until the end of array.
+        let Bit = SplitBinNumber[i+1];              // "i+1" so the . can be ignored.
+        if (Bit == 1){
+            FracDecNumber += Math.pow(2,-(i+1 - WholeBinNumberLengh)) 
+        }
+    } 
+
+    return console.log(WholeDecNumber+FracDecNumber);
+}
+
+function Bin2Hex(){
+
+    let BinNumber = "111011.11111";
+    let SplitBinNumber = Bin2Dec.split("");
+    let HexNumber = "";
+
+    let Bin2HexConversion = {
+        "0000": 0,
+        "0001": 1,
+        "0010": 2,
+        "0010": 3,
+        "0011": 4,
+        "0100": 5,
+        "0101": 6,
+        "0110": 7,
+        "0111": 8,
+        "1000": 9,
+        "1001": A,
+        "1010": B,
+        "1011": C,
+        "1100": D,
+        "1101": E,
+        "1111": F
+    }
+
+
+}
+
+Bin2Hex();
