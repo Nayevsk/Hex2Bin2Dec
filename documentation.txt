@@ -4,9 +4,9 @@ This project has as the final goal to create a Dec,Hex,Bin converter to be uploa
     - Decimal to Binary. COMPLETED at 27/05/2024.
     - Decimal to Hexadecimal. COMPLETED at 29/05/2024.
     - Binary to Decimal. COMPLETED at 30/05/2024
-    - Binary to Hexadecimal.
+    - Binary to Hexadecimal. COMPLETED at 30/05/2024
     - Hexadecimal to Decimal.
-    - Hexadecimal to Binary
+    - Hexadecimal to Binary.
 
 - Upload webpage:
     - Create HTML and CSS template.

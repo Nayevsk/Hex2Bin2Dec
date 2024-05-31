@@ -138,8 +138,7 @@ function Bin2Hex(){
 
     let BinNumber = "111011.11111";
     let SplitBinNumber = BinNumber.split("");
-    let HexNumber = "";
-    let Bin2HexConversion = {
+    let Bin2HexConversion = {  // find out how to make his library global (can be used by other functions)
         "0000": 0,
         "0001": 1,
         "0010": 2,
@@ -160,7 +159,7 @@ function Bin2Hex(){
 
     // Preparing Bin Number to conversion:
 
-    //      Whole Bin Conversion:
+    //  Whole Bin Conversion:
 
     let BinNumberLengh = BinNumber.length;
     let WholeBinNumberLengh = SplitBinNumber.findIndex (ele => ele == ".")    // find the index of "." in the array.
@@ -171,7 +170,7 @@ function Bin2Hex(){
         SplitBinNumber.unshift("0");
         WholeBinNumberLengh += 1; 
     }
-    //      Frac Bin Conversion:
+    //  Hex Frac Bin Conversion:
 
     let FracBinNumberLengh = BinNumberLengh - WholeBinNumberLengh +1; // +1 added in order to compensate the lengh used by "."
 
@@ -180,7 +179,7 @@ function Bin2Hex(){
         FracBinNumberLengh += 1;
     }
 
-    // Joining array (BinNumberReady4Convertion):
+    //Joining array (BinNumberReady4Convertion):
 
     BinNumber = SplitBinNumber.join("");
     let Index = SplitBinNumber.findIndex (ele => ele == "."); // Stores the location of "." in the array (to be added after conversion). 
@@ -194,11 +193,72 @@ function Bin2Hex(){
     };  
 
     let Bin2HexSplit = Bin2Hex.split("");              // Adding back the "."
-    Bin2HexSplit.splice(2,0,".");
+    Bin2HexSplit.splice(2,0,".");                       // Why 2??? REVIEW!!!!!!!!!!!!!!!!!!!!!!!
     Bin2Hex = Bin2HexSplit.join("");
 
     return console.log (Bin2Hex);
 
 }
 
-Bin2Hex();
+function Hex2bin(){
+
+    let HexNumber = "1B.A";
+    let SplitHexNumber = HexNumber.split("");
+    let CommaIndex = SplitHexNumber.findIndex(ele => ele == ".");
+    SplitHexNumber.splice(CommaIndex,1);  // removing "." from array
+    let BinNumber = "";
+
+    let Hex2BinConversion = {  // find out how to make his library global (can be used by other functions).
+        0 : "0000",
+        1 : "0001",
+        2 : "0010",
+        3 : "0011",
+        4 : "0100",
+        5 : "0101",
+        6 : "0110",
+        7 : "0111",
+        8 : "1000",
+        9 : "1001",
+        "A" : "1010",
+        "B" : "1011",
+        "C" : "1100",
+        "D" : "1101",
+        "E" : "1110",
+        "F" : "1111"
+    }
+
+    for( i=0; i < SplitHexNumber.length; i++ ){
+        BinNumber += Hex2BinConversion[SplitHexNumber[i]];      // whith no ".".
+    }
+
+    BinNumber = BinNumber.split("");        // Adding "." back.
+    BinNumber.splice(CommaIndex*4,0,".");                       
+    BinNumber = BinNumber.join("");     // remove 
+
+    // Removing 0s from Extremities of Bin: 
+
+    BinNumber = BinNumber.split("");
+
+    for (i = 0 ; i < 4; i++) {          // Whole BinNumber 0s removal.
+        if( BinNumber[0] == 0  ){
+            NewBinNumber = BinNumber.shift();
+        }else{
+            break;
+        }
+    }
+
+    for (i = 0; i < 4 ; i++){    // Frac BinNumber 0s removal.
+        if ( BinNumber[BinNumber.length - 1] == 0 ){
+            NewBinNumber = BinNumber.pop();
+        } else {
+            break;
+        }
+    }
+
+    BinNumber = BinNumber.join("");
+    
+    return console.log(BinNumber)
+
+}
+
+Hex2bin();
