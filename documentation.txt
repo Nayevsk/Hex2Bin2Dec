@@ -1,4 +1,8 @@
-This project has as the final goal to create a Dec,Hex,Bin converter to be uploaded as on github webservice. It will have:
+This project has as the final goal to create a Dec -> Hex -> Bin converter to be uploaded as on github webpage.
+
+
+STATUS:
+
 
 - Funtion to peform all desired convertions, selected by user and results will be presented at the webpage. IN PROGRESS (24/05/2024)
     - Decimal to Binary. COMPLETED 
@@ -9,8 +13,7 @@ This project has as the final goal to create a Dec,Hex,Bin converter to be uploa
     - Hexadecimal to Binary. COMPLETED 
 
 - Upload webpage:
-    - Create HTML and CSS template.
-    - Add bootstrap to enhance page look.
+    - Create HTML and CSS template using bootstrap. IN PROGRESS
     - Implement JS functions into webpage.
     - Troubleshooting.
 
