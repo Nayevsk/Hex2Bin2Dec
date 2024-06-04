@@ -121,8 +121,6 @@ function Bin2Dec (){
         }
     }    
 
-    // FracBin2Dec Sum:  TO FIX
-
         
     for (i= WholeBinNumberLengh; i< BinNumber.length -1; i++){        // Iterate from the "." position until the end of array.
         let Bit = SplitBinNumber[i+1];              // "i+1" so the . can be ignored.
@@ -261,4 +259,44 @@ function Hex2bin(){
 
 }
 
-Hex2bin();
+function Hex2Dec(){
+
+    let HexNumber = "1AB.EF";    
+    let DecNumber = 0;
+    let SplitHexNumber = HexNumber.split("");
+    let CommaIndex = SplitHexNumber.findIndex( ele => ele == ".");
+    let HexNumberWhole = SplitHexNumber.slice(0,CommaIndex);
+    let HexNumberFrac = SplitHexNumber.slice(CommaIndex + 1 , SplitHexNumber.length);
+    
+    let Hex2BinConversion = {        
+        "A" : 10,
+        "B" : 11,
+        "C" : 12,
+        "D" : 13,
+        "E" : 14,
+        "F" : 15
+    }
+
+    for (i = 0; i < HexNumberWhole.length; i++) { 
+        Digit = HexNumberWhole[HexNumberWhole.length -1 - i];
+        if (Digit < 10 ){
+            DecNumber +=  Digit * Math.pow(16, i); 
+        }else {
+            DecNumber += Hex2BinConversion[Digit] * Math.pow(16,i);
+        }
+    }
+
+    for (i = 0; i < HexNumberFrac.length; i++){
+        Digit = HexNumberFrac[i];
+        if(Digit < 10) {
+            DecNumber += Digit * Math.pow(16, -(i+1))
+        } else {
+            DecNumber += Hex2BinConversion[Digit] * Math.pow(16, -(i+1))
+        }
+    }
+
+    return console.log(DecNumber)
+    
+}
+
+Hex2Dec();

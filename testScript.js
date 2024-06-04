@@ -1,7 +1,5 @@
-let a = "lucas";
-let aSplit = a.split("");
+let fruits = ['Apple', 'Banana', 'Cherry', '.', 'Date', 'Elderberry'];
+let removed = fruits.slice(4,6);
 
-let index4c = aSplit.findIndex(ele => ele == "c");
-
-console.log (index4c);
-
+console.log(fruits);  
+console.log(removed); 

@@ -1,12 +1,12 @@
 This project has as the final goal to create a Dec,Hex,Bin converter to be uploaded as on github webservice. It will have:
 
 - Funtion to peform all desired convertions, selected by user and results will be presented at the webpage. IN PROGRESS (24/05/2024)
-    - Decimal to Binary. COMPLETED at 27/05/2024.
-    - Decimal to Hexadecimal. COMPLETED at 29/05/2024.
-    - Binary to Decimal. COMPLETED at 30/05/2024
-    - Binary to Hexadecimal. COMPLETED at 30/05/2024
-    - Hexadecimal to Decimal.
-    - Hexadecimal to Binary.
+    - Decimal to Binary. COMPLETED 
+    - Decimal to Hexadecimal. COMPLETED 
+    - Binary to Decimal. COMPLETED     
+    - Binary to Hexadecimal. COMPLETED     
+    - Hexadecimal to Decimal. COMPLETED     
+    - Hexadecimal to Binary. COMPLETED 
 
 - Upload webpage:
     - Create HTML and CSS template.
