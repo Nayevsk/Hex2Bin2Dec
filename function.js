@@ -1,4 +1,8 @@
-function RevertingString(str){  // Reverts an array, used for study porpuse, could simple invert the order of addition for Bin|Hex strings.
+var element1 = document.getElementById("element1");
+var element1 = document.getElementById("element2");
+
+
+function RevertingString(str){
     var splitString = str.split(""); 
     
     var reverseArray = splitString.reverse(); 
