@@ -1,6 +1,3 @@
-var element1 = document.getElementById("element1");
-var element1 = document.getElementById("element2");
-
 
 function RevertingString(str){
     var splitString = str.split(""); 
@@ -12,12 +9,12 @@ function RevertingString(str){
    return joinArray
 }
 
-function Dec2Bin(Dec){
+function Dec2Bin(number){
 
-    let BinaryNumber = "";         // Creating string to represent the bynary number.
-    let BinaryFraction = "";        // Creating string to represent the bynary frection.
+    let BinaryNumber = "";         
+    let BinaryFraction = "";       
     let Product = 0;
-    let DecNumber = Dec;
+    let DecNumber = number;
     let NumberOfDecNumber = Math.floor(DecNumber);       // Getting only the number
     let Quotient = NumberOfDecNumber;
     let remainder = 0;
@@ -49,17 +46,18 @@ function Dec2Bin(Dec){
     // console.log (BinaryNumber);
     // console.log (BinaryFraction)
 
-    return console.log(BinaryNumber+"."+BinaryFraction)      
+    return BinaryNumber+"."+BinaryFraction    
 }
 
-function Dec2Hex() {
+function Dec2Hex(number) {
     
     // WholeDec to WholeHex:
 
-    let DecNumber = 159.046;
+    let DecNumber = number;
     let WholeDecNumber = Math.floor(DecNumber);
     let Quotient = WholeDecNumber;    
     let HexNumber= "";
+    let HexNumberComplete = "";
     
     let HexSimbols = { // Dictionary for conversion
         10:"A",
@@ -87,7 +85,7 @@ function Dec2Hex() {
    
     let Product = DecNumber - Math.floor(DecNumber);   
     let HexFractionNumber = "";
-    let Precision = 11;         // Why precision is only efficient until 11????
+    let Precision = 4;         
 
     for(let i = 0; i < Precision ; i++ ) {
         
@@ -101,12 +99,14 @@ function Dec2Hex() {
         Product = Product - Math.floor(Product);         
     }
 
-    return console.log (HexNumber+"."+HexFractionNumber)
+    HexNumberComplete = HexNumber+"."+HexFractionNumber;
+
+    return HexNumberComplete;
 }
 
-function Bin2Dec (){
+function Bin2Dec (number){
 
-    let BinNumber = "101110011.11001";
+    let BinNumber = number;
     let WholeBinNumberLengh = 0;
     let WholeDecNumber = 0;
     let FracDecNumber = 0;
@@ -133,12 +133,12 @@ function Bin2Dec (){
         }
     } 
 
-    return console.log(WholeDecNumber+FracDecNumber);
+    return WholeDecNumber+FracDecNumber;
 }
 
-function Bin2Hex(){
+function Bin2Hex(number){
 
-    let BinNumber = "111011.11111";
+    let BinNumber = number;
     let SplitBinNumber = BinNumber.split("");
     let Bin2HexConversion = {  // find out how to make his library global (can be used by other functions)
         "0000": 0,
@@ -198,13 +198,13 @@ function Bin2Hex(){
     Bin2HexSplit.splice(2,0,".");                       // Why 2??? REVIEW!!!!!!!!!!!!!!!!!!!!!!!
     Bin2Hex = Bin2HexSplit.join("");
 
-    return console.log (Bin2Hex);
+    return Bin2Hex;
 
 }
 
-function Hex2bin(){
+function Hex2bin(number){
 
-    let HexNumber = "1B.A";
+    let HexNumber = number;
     let SplitHexNumber = HexNumber.split("");
     let CommaIndex = SplitHexNumber.findIndex(ele => ele == ".");
     SplitHexNumber.splice(CommaIndex,1);  // removing "." from array
@@ -259,13 +259,13 @@ function Hex2bin(){
 
     BinNumber = BinNumber.join("");
     
-    return console.log(BinNumber)
+    return BinNumber
 
 }
 
-function Hex2Dec(){
+function Hex2Dec(number){
 
-    let HexNumber = "1AB.EF";    
+    let HexNumber = number;    
     let DecNumber = 0;
     let SplitHexNumber = HexNumber.split("");
     let CommaIndex = SplitHexNumber.findIndex( ele => ele == ".");
@@ -299,8 +299,43 @@ function Hex2Dec(){
         }
     }
 
-    return console.log(DecNumber)
+    return DecNumber
     
 }
 
-Hex2Dec();
+function convertValue() {
+
+    var element1 = document.getElementById("element1");    
+    var element2 = document.getElementById("element2");    
+    var number = document.getElementById("number");    
+    var result = "";
+
+    const element1Value = element1.value;
+    const element2Value = element2.value;
+    const numberValue = number.value;
+
+    if (element1Value == 1 && element2Value == 2) {
+        result = Hex2bin(numberValue);
+    } else if (element1Value == 1 && element2Value == 3) {
+        result = Hex2Dec(numberValue);
+    } else if (element1Value == 2 && element2Value == 1) {
+        result = Bin2Hex(numberValue);
+    } else if (element1Value == 2 && element2Value == 3) {
+        result = Bin2Dec(numberValue);
+    } else if (element1Value == 3 && element2Value == 1) {
+        result = Dec2Hex(numberValue);
+    } else if (element1Value == 3 && element2Value == 2) {
+        result = Dec2Bin(numberValue);
+    } else {
+        result = "Error";
+    }
+
+    document.getElementById('result').value = result;
+
+    console.log (result)    
+
+}
+
+convertValue()
+
+
